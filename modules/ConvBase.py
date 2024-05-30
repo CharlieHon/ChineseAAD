@@ -3,7 +3,7 @@ import torch.nn as nn
 
 
 class Conv(nn.Module):
-    def __init__(self, channel_num=64, kernel_size=17, class_num=2):
+    def __init__(self, channel_num=32, kernel_size=17, class_num=2):
         super().__init__()
 
         # pad = nn.ZeroPad2d(((kernel_size - 1) // 2, (kernel_size - 1) // 2 + 1, 0, 0))
@@ -19,12 +19,12 @@ class Conv(nn.Module):
         )
 
     def forward(self, x):
-        # 因为输入的eeg数据形状是 (samples, channels)，即 (128, 64)
-        # 升维 (4, 128, 64)   ->  (4, 1, 128, 64)
+        # 因为输入的eeg数据形状是 (samples, channels)，即 (128, 32)
+        # 升维 (4, 128, 32)   ->  (4, 1, 128, 32)
         x = x.unsqueeze(dim=1)
-        # 转置(可选) (4, 1, 128, 64) -> (4, 1, 64, 128)
-        # x = x.transpose(2, 3)
-        # (4, 1, 64, 128)   ->      (4, 5, 1, 1)
+        # 转置(可选) (4, 1, 128, 32) -> (4, 1, 32, 128)
+        x = x.transpose(2, 3)
+        # (4, 1, 32, 128)   ->      (4, 5, 1, 1)
         x = self.features(x)
         # (4, 5, 1, 1)      ->      (4, 5)
         x = torch.flatten(x, start_dim=1)
@@ -36,6 +36,6 @@ class Conv(nn.Module):
 if __name__ == '__main__':
 
     model = Conv()
-    data = torch.randn(4, 64, 128)
+    data = torch.randn(4, 128, 32)
     out = model(data)
     print(out.shape)

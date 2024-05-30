@@ -1,5 +1,8 @@
 Data_for_CS/
 Data_for_SS/
+origin_data/
 .idea/
 results/
 params/
+__pycache__/
+*.pdf
