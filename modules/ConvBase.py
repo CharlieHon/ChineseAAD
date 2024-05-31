@@ -2,7 +2,7 @@ import torch
 import torch.nn as nn
 
 
-class Conv(nn.Module):
+class ConvNet(nn.Module):
     def __init__(self, channel_num=32, kernel_size=17, class_num=2):
         super().__init__()
 
@@ -23,7 +23,7 @@ class Conv(nn.Module):
         # 升维 (4, 128, 32)   ->  (4, 1, 128, 32)
         x = x.unsqueeze(dim=1)
         # 转置(可选) (4, 1, 128, 32) -> (4, 1, 32, 128)
-        x = x.transpose(2, 3)
+        # x = x.transpose(2, 3)
         # (4, 1, 32, 128)   ->      (4, 5, 1, 1)
         x = self.features(x)
         # (4, 5, 1, 1)      ->      (4, 5)
@@ -34,8 +34,7 @@ class Conv(nn.Module):
 
 
 if __name__ == '__main__':
-
-    model = Conv()
-    data = torch.randn(4, 128, 32)
+    model = ConvNet()
+    data = torch.randn(4, 32, 128)
     out = model(data)
     print(out.shape)

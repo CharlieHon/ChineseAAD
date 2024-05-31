@@ -56,7 +56,8 @@ print(eeg_data.shape)   # (16, 136800, 32)
 - 数据是在每个trial中划分出训练集、验证集和测试集(8:1:1)，然后将所有trial相同集合的数据拼接形成每个被试的数据集。
 
 TODO:
-- []检查每个样本是否已经进行归一化
+- [√]检查每个样本是否已经进行归一化[是]
+- [√]使用`DL for EEG`中的 `the exponential_moving_standardize` 归一化方法
 - []使用简单模型测试一下
 
 ### origin_data
