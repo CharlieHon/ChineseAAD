@@ -58,8 +58,17 @@ print(eeg_data.shape)   # (16, 136800, 32)
 TODO:
 - [√]检查每个样本是否已经进行归一化[是]
 - [√]使用`DL for EEG`中的 `the exponential_moving_standardize` 归一化方法
-- []使用简单模型测试一下
+- [√]使用简单模型测试一下
 
 ### origin_data
 
 ### Data_for_CS
+
+
+
+## 模型思路
+
+- 使用基于`transformer`的模型
+- 利用脑电导联的空间分布
+- 使用可训练空间滤波得到二维脑电图特征
+- 将二维脑电图特征以类似图片的处理方式，通过`transformer`进行`embedding`

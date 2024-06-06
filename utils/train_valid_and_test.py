@@ -98,7 +98,6 @@ def train_valid_model(eeg, label, train_ids, valid_ids, sub, fold, model_params=
             valid_acc_max = valid_acc
             valid_acc_max_loss = valid_loss
             # 阶段一：保存了在验证集中准确率最高的模型参数
-            # save_dir = cfg.params_dir + f'/sub{sub + 1}'
             params_dir_ = cfg.params_dir + '/'
             for key, val in model_params.items():
                 params_dir_ += f'_{key}{val}'

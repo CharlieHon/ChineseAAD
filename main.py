@@ -51,7 +51,6 @@ for sub, sub_id in enumerate('ABCDEFGH'):
         test_res[sub, fold] = test_model(eeg_val, label_val, sub, fold + 1, model_params)
         results_write.write(
             f'sub{sub + 1}_fold{fold + 1}:\tval_acc:{val_res[sub, fold]:.4f}, test_acc:{test_res[sub, fold]:.4f}\n')
-    break
 
 duration = int(time.time() - start)  # 单位：秒
 hour = duration // 3600
